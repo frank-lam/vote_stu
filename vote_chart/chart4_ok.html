@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>ECharts</title>
+		<!-- 引入 echarts.js -->
+		<script src="js/echarts.min.js"></script>
+
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+		<div id="tuanwei" style="width: 100%;height: auto;"></div>
+		<div id="xueshenghui" style="width: 100%;height: auto;"></div>
+
+		<script type="text/javascript">
+			winHeight = window.innerHeight;
+			document.getElementById('tuanwei').style.height = (winHeight / 2 - 8) + "px";
+			document.getElementById('xueshenghui').style.height = (winHeight / 2 - 8) + "px";
+			// 显示标题，图例和空的坐标轴
+			var myChart = echarts.init(document.getElementById('tuanwei'));
+			// 显示标题，图例和空的坐标轴
+			myChart.setOption({
+				title: {
+					x: 'center',
+					text: '杭州国际服务工程学院第五次团代会候选人（16进13）',
+					//					subtext: '16进13',
+					link: 'http://echarts.baidu.com/doc/example.html',
+					textStyle: {
+						fontStyle: 'normal',
+						fontWeight: 'bold',
+						fontFamily: 'Microsoft Yahei',
+						fontSize: 24,
+					}
+				},
+				tooltip: {
+					trigger: 'item'
+				},
+				toolbox: {
+					show: true,
+					feature: {
+						dataView: {
+							show: true,
+							readOnly: false
+						},
+						restore: {
+							show: true
+						},
+						saveAsImage: {
+							show: true
+						}
+					}
+				},
+				calculable: true,
+				grid: {
+					borderWidth: 0,
+					y: 80,
+					y2: 60
+				},
+				xAxis: [{
+					type: 'category',
+					show: false,
+					data: [],
+					fontSize: 20
+				}],
+				yAxis: [{
+					type: 'value',
+					show: false
+				}],
+				series: [{
+					name: '投票票数',
+					type: 'bar',
+					itemStyle: {
+						normal: {
+							color: function(params) {
+								// build a color map as your need.
+								var colorList = [
+									'#C1232B', '#B5C334', '#FCCE10', '#E87C25', '#27727B',
+									'#FE8463', '#9BCA63', '#FAD860', '#F3A43B', '#60C0DD',
+									'#D7504B', '#C6E579', '#F4E001', '#F0805A', '#26C0C0',
+									'#FF9900'
+								];
+								return colorList[params.dataIndex]
+							},
+							label: {
+								show: true,
+								position: 'top',
+								formatter: '{b}\n{c}',
+								textStyle: {
+									fontStyle: 'normal',
+									fontWeight: 'normal',
+									fontFamily: 'Microsoft Yahei',
+									fontSize: 24,
+								}
+							}
+						}
+					},
+					data: [],
+					markPoint: {
+						tooltip: {
+							trigger: 'item',
+							backgroundColor: 'rgba(0,0,0,0)',
+							formatter: function(params) {
+								return '<img src="' + params.data.symbol.replace('image://', '') + '"/>';
+							}
+						},
+						data: [{
+							xAxis: 0,
+							y: 350,
+							name: 'Line',
+							symbolSize: 22,
+							symbol: 'image://../asset/ico/折线图.png'
+						}, {
+							xAxis: 1,
+							y: 350,
+							name: 'Bar',
+							symbolSize: 20,
+							symbol: 'image://../asset/ico/柱状图.png'
+						}, {
+							xAxis: 2,
+							y: 350,
+							name: 'Scatter',
+							symbolSize: 20,
+							symbol: 'image://../asset/ico/散点图.png'
+						}, {
+							xAxis: 3,
+							y: 350,
+							name: 'K',
+							symbolSize: 20,
+							symbol: 'image://../asset/ico/K线图.png'
+						}, {
+							xAxis: 4,
+							y: 350,
+							name: 'Pie',
+							symbolSize: 20,
+							symbol: 'image://../asset/ico/饼状图.png'
+						}, {
+							xAxis: 5,
+							y: 350,
+							name: 'Radar',
+							symbolSize: 20,
+							symbol: 'image://../asset/ico/雷达图.png'
+						}, {
+							xAxis: 6,
+							y: 350,
+							name: 'Chord',
+							symbolSize: 20,
+							symbol: 'image://../asset/ico/和弦图.png'
+						}, {
+							xAxis: 7,
+							y: 350,
+							name: 'Force',
+							symbolSize: 20,
+							symbol: 'image://../asset/ico/力导向图.png'
+						}, {
+							xAxis: 8,
+							y: 350,
+							name: 'Map',
+							symbolSize: 20,
+							symbol: 'image://../asset/ico/地图.png'
+						}, {
+							xAxis: 9,
+							y: 350,
+							name: 'Gauge',
+							symbolSize: 20,
+							symbol: 'image://../asset/ico/仪表盘.png'
+						}, {
+							xAxis: 10,
+							y: 350,
+							name: 'Funnel',
+							symbolSize: 20,
+							symbol: 'image://../asset/ico/漏斗图.png'
+						}, {
+							xAxis: 11,
+							y: 350,
+							name: 'Funnel',
+							symbolSize: 22
+						}, {
+							xAxis: 12,
+							y: 350,
+							name: 'Funnel',
+							symbolSize: 22
+						}, {
+							xAxis: 13,
+							y: 350,
+							name: 'Funnel',
+							symbolSize: 22
+						}]
+					}
+				}]
+			});
+			var myChart2 = echarts.init(document.getElementById('xueshenghui'));
+			// 显示标题，图例和空的坐标轴
+			myChart2.setOption({
+				title: {
+					x: 'center',
+					text: '杭州国际服务工程学院第十六次学代会候选人（17进14）',
+					//					subtext: '18进14',
+					link: 'http://echarts.baidu.com/doc/example.html',
+					textStyle: {
+						fontStyle: 'normal',
+						fontWeight: 'bold',
+						fontFamily: 'Microsoft Yahei',
+						fontSize: 24,
+					}
+				},
+				tooltip: {
+					trigger: 'item'
+				},
+				toolbox: {
+					show: true,
+					feature: {
+						dataView: {
+							show: true,
+							readOnly: false
+						},
+						restore: {
+							show: true
+						},
+						saveAsImage: {
+							show: true
+						}
+					}
+				},
+				calculable: true,
+				grid: {
+					borderWidth: 0,
+					y: 80,
+					y2: 60
+				},
+				xAxis: [{
+					type: 'category',
+					show: false,
+					data: [],
+					fontSize: 20
+				}],
+				yAxis: [{
+					type: 'value',
+					show: false
+				}],
+				series: [{
+					name: '投票票数',
+					type: 'bar',
+					itemStyle: {
+						normal: {
+							color: function(params) {
+								// build a color map as your need.
+								var colorList = [
+									'#C1232B', '#B5C334', '#FCCE10', '#E87C25', '#27727B',
+									'#FE8463', '#9BCA63', '#FAD860', '#F3A43B', '#60C0DD',
+									'#D7504B', '#C6E579', '#F4E001', '#F0805A', '#26C0C0',
+									'#FF9900', '#FF6666', '#99CC33'
+								];
+								return colorList[params.dataIndex]
+							},
+							label: {
+								show: true,
+								position: 'top',
+								formatter: '{b}\n{c}',
+								textStyle: {
+									fontStyle: 'normal',
+									fontWeight: 'normal',
+									fontFamily: 'Microsoft Yahei',
+									fontSize: 24,
+								}
+							}
+						}
+					},
+					data: [],
+					markPoint: {
+						tooltip: {
+							trigger: 'item',
+							backgroundColor: 'rgba(0,0,0,0)',
+							formatter: function(params) {
+								return '<img src="' + params.data.symbol.replace('image://', '') + '"/>';
+							}
+						},
+						data: [{
+							xAxis: 0,
+							y: 350,
+							name: 'Line',
+							symbolSize: 22,
+							symbol: 'image://../asset/ico/折线图.png'
+						}, {
+							xAxis: 1,
+							y: 350,
+							name: 'Bar',
+							symbolSize: 20,
+							symbol: 'image://../asset/ico/柱状图.png'
+						}, {
+							xAxis: 2,
+							y: 350,
+							name: 'Scatter',
+							symbolSize: 20,
+							symbol: 'image://../asset/ico/散点图.png'
+						}, {
+							xAxis: 3,
+							y: 350,
+							name: 'K',
+							symbolSize: 20,
+							symbol: 'image://../asset/ico/K线图.png'
+						}, {
+							xAxis: 4,
+							y: 350,
+							name: 'Pie',
+							symbolSize: 20,
+							symbol: 'image://../asset/ico/饼状图.png'
+						}, {
+							xAxis: 5,
+							y: 350,
+							name: 'Radar',
+							symbolSize: 20,
+							symbol: 'image://../asset/ico/雷达图.png'
+						}, {
+							xAxis: 6,
+							y: 350,
+							name: 'Chord',
+							symbolSize: 20,
+							symbol: 'image://../asset/ico/和弦图.png'
+						}, {
+							xAxis: 7,
+							y: 350,
+							name: 'Force',
+							symbolSize: 20,
+							symbol: 'image://../asset/ico/力导向图.png'
+						}, {
+							xAxis: 8,
+							y: 350,
+							name: 'Map',
+							symbolSize: 20,
+							symbol: 'image://../asset/ico/地图.png'
+						}, {
+							xAxis: 9,
+							y: 350,
+							name: 'Gauge',
+							symbolSize: 20,
+							symbol: 'image://../asset/ico/仪表盘.png'
+						}, {
+							xAxis: 10,
+							y: 350,
+							name: 'Funnel',
+							symbolSize: 20,
+							symbol: 'image://../asset/ico/漏斗图.png'
+						}, {
+							xAxis: 11,
+							y: 350,
+							name: 'Funnel',
+							symbolSize: 22
+						}, {
+							xAxis: 12,
+							y: 350,
+							name: 'Funnel',
+							symbolSize: 22
+						}, {
+							xAxis: 13,
+							y: 350,
+							name: 'Funnel',
+							symbolSize: 22
+						}, {
+							xAxis: 14,
+							y: 350,
+							name: 'Funnel',
+							symbolSize: 22
+						}, {
+							xAxis: 15,
+							y: 350,
+							name: 'Funnel',
+							symbolSize: 22
+						}, {
+							xAxis: 16,
+							y: 350,
+							name: 'Funnel',
+							symbolSize: 22
+						}, {
+							xAxis: 17,
+							y: 350,
+							name: 'Funnel',
+							symbolSize: 22
+						}]
+					}
+				}]
+			});
+
+			function update() {
+				$.ajax({
+					type: "post",
+					async: true, //同步执行
+					url: "mapdata.php?action=tuanwei",
+					dataType: "json", //返回数据形式为json
+					data: {
+						rnd: Math.random()
+					},
+					success: function(result) {
+						//console.log(result);
+						myChart.hideLoading();
+						myChart.setOption({
+							xAxis: {
+								data: [
+									result[0].name,
+									result[1].name,
+									result[2].name,
+									result[3].name,
+									result[4].name,
+									result[5].name,
+									result[6].name,
+									result[7].name,
+									result[8].name,
+									result[9].name,
+									result[10].name,
+									result[11].name,
+									result[12].name,
+									result[13].name,
+									result[14].name,
+									result[15].name,
+								],
+								TextStyle: {
+									fontSize: 20
+								}
+							},
+							series: [{
+								// 根据名字对应到相应的系列
+								name: ['张三'],
+								data: [
+									result[0].score,
+									result[1].score,
+									result[2].score,
+									result[3].score,
+									result[4].score,
+									result[5].score,
+									result[6].score,
+									result[7].score,
+									result[8].score,
+									result[9].score,
+									result[10].score,
+									result[11].score,
+									result[12].score,
+									result[13].score,
+									result[14].score,
+									result[15].score
+								]
+							}]
+						});
+					},
+					error: function(errorMsg) {
+						alert("请求数据失败!");
+					}
+				});
+			}
+
+			function update2() {
+				$.ajax({
+					type: "post",
+					async: true, //同步执行
+					url: "mapdata.php?action=xueshenghui",
+					dataType: "json", //返回数据形式为json
+					data: {
+						rnd: Math.random()
+					},
+					success: function(result) {
+						//console.log(result);
+						myChart2.hideLoading();
+						myChart2.setOption({
+							xAxis: {
+								data: [
+									result[0].name,
+									result[1].name,
+									result[2].name,
+									result[3].name,
+									result[4].name,
+									result[5].name,
+									result[6].name,
+									result[7].name,
+									result[8].name,
+									result[9].name,
+									result[10].name,
+									result[11].name,
+									result[12].name,
+									result[13].name,
+									result[14].name,
+									result[15].name,
+									result[16].name
+								],
+								TextStyle: {
+									fontSize: 20
+								}
+							},
+							series: [{
+								// 根据名字对应到相应的系列
+								name: ['张三'],
+								data: [
+									result[0].score,
+									result[1].score,
+									result[2].score,
+									result[3].score,
+									result[4].score,
+									result[5].score,
+									result[6].score,
+									result[7].score,
+									result[8].score,
+									result[9].score,
+									result[10].score,
+									result[11].score,
+									result[12].score,
+									result[13].score,
+									result[14].score,
+									result[15].score,
+									result[16].score
+								]
+							}]
+						});
+					},
+					error: function(errorMsg) {
+						alert("请求数据失败!");
+					}
+				});
+			}
+			setInterval(update, 1000);
+			setInterval(update2, 1000);
+		</script>
+	</body>
+
+</html>
